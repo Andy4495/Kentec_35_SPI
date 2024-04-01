@@ -1,0 +1,30 @@
+# GitHub action to build repos that are dependent on this library
+# https://github.com/Andy4495/Template-Repo/blob/main/.github/workflows/build-dependent-repos.yml
+name: Build Dependent Repos
+
+on: 
+  release:
+    types: [published,edited]
+  workflow_dispatch:
+    inputs:
+      message:
+        description: Message to display in job summary
+        required: false
+        type: string
+
+jobs:
+  build-dependent-repos:
+    strategy:
+      matrix:
+        include:
+          - name: Trigger build on ConnectedStatusMonitor
+            repo: ConnectedStatusMonitor
+
+
+    name: call-compile-sketches-workflow
+    uses: Andy4495/.github/.github/workflows/build-dependent-repos.yml@main
+    with:
+      message: ${{ inputs.message }}
+      repo-name: ${{ matrix.repo }}
+    secrets: inherit
+  
