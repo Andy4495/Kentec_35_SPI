@@ -45,7 +45,7 @@
 #if LCD_SCREEN_RELEASE < 114
 #error Required LCD_SCREEN_RELEASE 114
 #endif
-#if defined(__LM4F120H5QR__) || defined(__32MX320F128H__) || defined(__AVR_ATmega2560__)
+#if defined(__LM4F120H5QR__) || defined(__32MX320F128H__) || defined(__AVR_ATmega2560__) || defined(__TM4C1294NCPDT__)
 #define MAX_FONT_SIZE 3
 #elif defined(__MSP430F5529)
 #define MAX_FONT_SIZE 2

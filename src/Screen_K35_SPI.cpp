@@ -140,7 +140,7 @@ Screen_K35_SPI::Screen_K35_SPI()
 void Screen_K35_SPI::begin()
 {
     
-#if defined(__LM4F120H5QR__) || defined(__TM4C123GH6PM__) || defined(__TM4C129XNCZAD__)
+#if defined(__LM4F120H5QR__) || defined(__TM4C123GH6PM__) || defined(__TM4C129XNCZAD__) || defined(__TM4C1294NCPDT__)
     SPI.setModule(2);
     SPI.begin();
     SPI.setBitOrder(MSBFIRST);
@@ -157,8 +157,13 @@ void Screen_K35_SPI::begin()
     pinMode(_pinScreenReset, OUTPUT);
     pinMode(_pinScreenChipSelect, OUTPUT);
     pinMode(_pinScreenBackLight, OUTPUT);
+    #if defined(__TM4C1294NCPDT__)
+    digitalWrite(_pinScreenBackLight, HIGH);
+    #warning Connected LaunchPad platform backlight control
+    #else
     analogWrite(_pinScreenBackLight, 127);
-    
+    #endif 
+   
 #if (GPIO_MODE == GPIO_FAST)
     //
     // Enable GPIOs
@@ -311,7 +316,7 @@ void Screen_K35_SPI::begin()
     
     // Touch
     uint16_t x0, y0, z0;
-    _getRawTouch(x0, y0, z0);
+    // _getRawTouch(x0, y0, z0);    // Sometimes gets stuck, so comment out and don't run
     
     // Touch calibration
     _touchTrim = TOUCH_TRIM;

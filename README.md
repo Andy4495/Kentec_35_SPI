@@ -23,13 +23,13 @@ This updated version adds support for the [TM4C129 Connected LaunchPad][5] and a
    || defined(__TM4C1294NCPDT__)
    ```
 
-2. The library has an issue where the `_getRawTouch()` function can get stuck in an endless loop. File `Screen_K35_SPI.cpp`, has the `_getRawTouch()` function call in the `begin()` method commented out:
+2. The library has an issue where the `_getRawTouch()` function can get stuck in an endless loop. File `Screen_K35_SPI.cpp`, has the `_getRawTouch()` function call in the `begin()` method commented out (line 314):
 
    ```cpp
    //    _getRawTouch(x0, y0, z0);
    ```
 
-3. When using the TM4C129 LaunchPad, configure the backlight pin as digital-only instead of PWM. This is to address an issue specific to my setup. In the file `Screen_K35_SPI.cpp`, change the following in the begin() method from:
+3. When using the TM4C129 LaunchPad, configure the backlight pin as digital-only instead of PWM. This is to address an issue specific to my setup. In the file `Screen_K35_SPI.cpp`, change the following in the begin() method (line 160) from:
 
    ```cpp
    analogWrite(_pinScreenBackLight, 127);
