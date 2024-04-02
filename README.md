@@ -54,6 +54,7 @@ The example program and existing documentation can be used to understand how to 
 
 ## References
 
+- Directory containing the [source version][10] of the library from the [Tiva board package][9]
 - Library [documentation][1]
 - Web page for [overall library][3] and [special edition for Energia][2]
 - [Connected Status Monitor][4]
@@ -79,6 +80,8 @@ See the file [`LICENSE.txt`][101] in this repository.
 [6]: https://embeddedcomputing.weebly.com/connected-launchpad-tm4c129-tiva-c-series.html
 [7]: https://energia.nu
 [8]: https://embeddedcomputing.weebly.com/
+[9]: https://github.com/energia/tivac-core
+[10]: https://github.com/energia/tivac-core/tree/master/libraries/Kentec_35_SPI
 [100]: https://creativecommons.org/licenses/by-nc-sa/4.0/
 [101]: ./LICENSE.txt
 [//]: # ([200]: https://github.com/Andy4495/Template-Repo)
