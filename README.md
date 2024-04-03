@@ -5,60 +5,35 @@
 
 This is a modified version of the [Kentec_35_SPI library][2] included with [Energia][7] and developed by [Rei Vilo][8].
 
-This updated version adds support for the [TM4C129 Connected LaunchPad][5] and addresses a couple specific issues with my [Connected Status Monitor][4] project.
+This updated version adds support for the [TM4C1294 Connected LaunchPad][5] and addresses a couple specific issues with my [Connected Status Monitor][4] project.
 
 ## Changes From Version 1.0.0 Library Included with Energia
 
-1. Add support for TM4C129 LaunchPad:
+### TM4C1294 Connected LaunchPad Specific Changes
 
-    To enable the large 12x8 font (font size 3), add the following to `LCD_screen_font.h` at the end of line 48:
+1. Add support for 12x8 font (font size 3).
 
-   ```cpp
-   || defined(__TM4C1294NCPDT__)
-   ```
+2. Default to standard SPI pins on the BoosterPack 1 connectors (pins 7, 14, 15 on J1/J2). The [tivac platform core][9] has these pins configured as SPI module 2.
 
-    To select the correct SPI port when connecting the Kentec display to "Booster Pack 1" connectors on the Connected LaunchPad, add the following to `Screen_K35_SPI.cpp`, at the end of line 143:
+3. Use `digitalWrite()` instead of `analogWrite()` for the LCD backlight, since my setup does not use a PWM pin for the backlight.
 
-   ```cpp
-   || defined(__TM4C1294NCPDT__)
-   ```
+### Other changes
 
-2. The library has an issue where the `_getRawTouch()` function can get stuck in an endless loop. File `Screen_K35_SPI.cpp`, has the `_getRawTouch()` function call in the `begin()` method commented out (line 314):
-
-   ```cpp
-   //    _getRawTouch(x0, y0, z0);
-   ```
-
-3. When using the TM4C129 LaunchPad, configure the backlight pin as digital-only instead of PWM. This is to address an issue specific to my setup. In the file `Screen_K35_SPI.cpp`, change the following in the begin() method (line 160) from:
-
-   ```cpp
-   analogWrite(_pinScreenBackLight, 127);
-   ```
-
-   To:
-
-   ```cpp
-   #if defined(__TM4C1294NCPDT__)
-   digitalWrite(_pinScreenBackLight, HIGH);
-   #warning Connected LaunchPad platform backlight control
-   #else
-   analogWrite(_pinScreenBackLight, 127);
-   #endif
-   ```
+1. Disable call to `_getRawTouch()`, as it frequently hangs on my setup.
 
 ## Usage
 
 Other than the changes listed above, this version should work the same as the library included with Energia and should support msp430, msp432, and tiva platforms.
 
-The example program and existing documentation can be used to understand how to use the library.
+The included [example program][11] and [documentation][1] can be used to understand how to use the library.
 
 ## References
 
-- Directory containing the [source version][10] of the library from the [Tiva board package][9]
+- GitHub [directory][10] containing the source version of the library from the [Tiva board package][9]
 - Library [documentation][1]
-- Web page for [full version][3] of the library and [special edition for Energia][2]
-- [Connected Status Monitor][4]
-- TM4C129 Connected Status Monitor [TI product page][5] and [Embedded Computing writeup][6]
+- Writeups by Rei Vilo for [full version][3] of the library and [special edition for Energia][2]
+- [Connected Status Monitor][4] project that uses this library
+- TM4C1294 Connected LaunchPad [TI product page][5] and [Embedded Computing writeup][6]
 
 ## License
 
@@ -82,6 +57,7 @@ See the file [`LICENSE.txt`][101] in this repository.
 [8]: https://embeddedcomputing.weebly.com/
 [9]: https://github.com/energia/tivac-core
 [10]: https://github.com/energia/tivac-core/tree/master/libraries/Kentec_35_SPI
+[11]: ./examples/LCD_LifeGame/LCD_LifeGame.ino
 [100]: https://creativecommons.org/licenses/by-nc-sa/4.0/
 [101]: ./LICENSE.txt
 [//]: # ([200]: https://github.com/Andy4495/Template-Repo)
