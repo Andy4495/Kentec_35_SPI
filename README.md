@@ -56,7 +56,7 @@ The example program and existing documentation can be used to understand how to 
 
 - Directory containing the [source version][10] of the library from the [Tiva board package][9]
 - Library [documentation][1]
-- Web page for [overall library][3] and [special edition for Energia][2]
+- Web page for [full version][3] of the library and [special edition for Energia][2]
 - [Connected Status Monitor][4]
 - TM4C129 Connected Status Monitor [TI product page][5] and [Embedded Computing writeup][6]
 
