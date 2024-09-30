@@ -1,7 +1,7 @@
 # Kentec_35_SPI Library
 
 [![Arduino Compile Sketches](https://github.com/Andy4495/Kentec_35_SPI/actions/workflows/arduino-compile-sketches.yml/badge.svg)](https://github.com/Andy4495/Kentec_35_SPI/actions/workflows/arduino-compile-sketches.yml)
-[![Check Markdown Links](https://github.com/Andy4495/Kentec_35_SPI/actions/workflows/CheckMarkdownLinks.yml/badge.svg)](https://github.com/Andy4495/Kentec_35_SPI/actions/workflows/CheckMarkdownLinks.yml)
+[![Check Markdown Links](https://github.com/Andy4495/Kentec_35_SPI/actions/workflows/check-links.yml/badge.svg)](https://github.com/Andy4495/Kentec_35_SPI/actions/workflows/check-links.yml)
 
 This is a modified version of the [Kentec_35_SPI library][2] included with [Energia][7] and developed by [Rei Vilo][8].
 
